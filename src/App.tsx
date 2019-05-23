@@ -1,13 +1,17 @@
 import React from 'react';
 import './App.css';
-import {ToDoAdd, ToDoList} from "./ToDo";
+import { ToDoAdd, ToDoList } from "./ToDo";
+import { StoreProvider } from 'easy-peasy';
+import { store } from './store';
 
 const App: React.FC = () => {
   return (
-    <div className="App">
-      <ToDoList/>
-      <ToDoAdd/>
-    </div>
+    <StoreProvider store={store}>
+      <div className="App">
+        <ToDoList />
+        <ToDoAdd />
+      </div>
+    </StoreProvider>
   );
 }
 

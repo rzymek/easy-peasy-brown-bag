@@ -1,8 +1,9 @@
 import {FormEvent, useState} from "react";
 import * as React from "react";
+import {useStore} from "./store";
 
 export function ToDoList() {
-    const items = ['test'];
+    const items = useStore(state => state.todos.items);
     return <div>
         <h2>Todo List</h2>
         <ul>
