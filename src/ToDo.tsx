@@ -1,6 +1,6 @@
 import {FormEvent, useState} from "react";
 import * as React from "react";
-import {useStore} from "./store";
+import {useStore, useActions} from "./store";
 
 export function ToDoList() {
     const items = useStore(state => state.todos.items);
@@ -16,9 +16,12 @@ export function ToDoList() {
 
 export function ToDoAdd() {
     const [text, setText] = useState('');
+    const add = useActions(actions => actions.todos.add);
 
     function handleSubmit(e: FormEvent<HTMLFormElement>) {
         e.preventDefault();
+        add(text);
+        setText('');
     }
 
     return <form onSubmit={handleSubmit}>
